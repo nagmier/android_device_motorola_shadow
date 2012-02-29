@@ -1,11 +1,11 @@
 # This is the product configuration for a full shadow
-DEVICE_PREBUILT := device/motorola/shadow/prebuilt
+DEVICE_PREBUILT := device/moto/shadow/prebuilt
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # Device overlay
-DEVICE_PACKAGE_OVERLAYS += device/motorola/shadow/overlay
+DEVICE_PACKAGE_OVERLAYS += device/moto/shadow/overlay
 
 # high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -13,8 +13,8 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Audio
 PRODUCT_COPY_FILES += \
-    device/motorola/shadow/audio/libaudio.so:/system/lib/libaudio.so \
-    device/motorola/shadow/audio/liba2dp.so:/system/lib/liba2dp.so
+    device/moto/shadow/audio/libaudio.so:/system/lib/libaudio.so \
+    device/moto/shadow/audio/liba2dp.so:/system/lib/liba2dp.so
 
 PRODUCT_PACKAGES := \
     audio.primary.omap3 \
@@ -135,14 +135,14 @@ PRODUCT_LOCALES += en_US
 
 # these need to be here for the installer, just put them here for now
 PRODUCT_COPY_FILES += \
-    device/motorola/shadow/releaseutils/mke2fs:system/bin/mke2fs \
-    device/motorola/shadow/releaseutils/tune2fs:system/bin/tune2fs \
-    device/motorola/shadow/releaseutils/check_kernel:system/etc/releaseutils/check_kernel \
-    device/motorola/shadow/releaseutils/finalize_release:system/etc/finalize_release
+    device/moto/shadow/releaseutils/mke2fs:system/bin/mke2fs \
+    device/moto/shadow/releaseutils/tune2fs:system/bin/tune2fs \
+    device/moto/shadow/releaseutils/check_kernel:system/etc/releaseutils/check_kernel \
+    device/moto/shadow/releaseutils/finalize_release:system/etc/finalize_release
 
 # copy all kernel modules under the "modules" directory to system/lib/modules
 PRODUCT_COPY_FILES += $(shell \
-    find device/motorola/shadow/modules -name '*.ko' \
+    find device/moto/shadow/modules -name '*.ko' \
     | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
     | tr '\n' ' ')
 
@@ -188,7 +188,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/motorola/shadow/kernel
+LOCAL_KERNEL := device/moto/shadow/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -200,7 +200,7 @@ $(call inherit-product, hardware/ti/omap3/Android.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product-if-exists, vendor/cm/config/common_full_phone.mk)
-$(call inherit-product, vendor/motorola/shadow/shadow-vendor.mk)
+$(call inherit-product, vendor/moto/shadow/shadow-vendor.mk)
 
 PRODUCT_NAME := cm_shadow
 PRODUCT_DEVICE := shadow

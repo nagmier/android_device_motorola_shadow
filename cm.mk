@@ -2,16 +2,16 @@
 #$(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+#$(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/motorola/shadow/shadow.mk)
+$(call inherit-product, device/moto/shadow/shadow.mk)
 
 # Inherit our vendor filez, yo.
-$(call inherit-product, vendor/motorola/shadow/shadow-vendor.mk)
+$(call inherit-product, vendor/moto/shadow/shadow-vendor.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := cm_shadow
+PRODUCT_NAME := shadow
 PRODUCT_BRAND := verizon
 PRODUCT_DEVICE := shadow
 PRODUCT_MODEL := Droid X
